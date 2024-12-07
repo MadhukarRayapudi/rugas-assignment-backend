@@ -1,0 +1,116 @@
+### Generate Token
+GET http://localhost:5000/token?role=admin
+
+GET http://localhost:5000/token?role=employee
+
+###
+
+### Laptops Management
+# Add a Laptop
+POST http://localhost:5000/laptops
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+Content-Type: application/json
+
+{
+    "brand": "Dell",
+    "model": "Inspiron 15",
+    "serialNumber": "12345",
+    "status": "available",
+    "purchaseDate": "2023-01-15"
+}
+
+###
+
+# Get All Laptops
+GET http://localhost:5000/laptops
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+
+###
+
+# Update Laptop Details
+PUT http://localhost:5000/laptops/18
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+Content-Type: application/json
+
+{
+    "brand": "HP",
+    "model": "Pavilion",
+    "serialNumber": "67890",
+    "status": "maintenance",
+    "purchaseDate": "2023-02-10"
+}
+
+###
+
+# Delete a Laptop
+DELETE http://localhost:5000/laptops/17
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+
+###
+
+### Employees Management
+# Get All Employees
+GET http://localhost:5000/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+
+###
+
+# Assign a Laptop
+POST http://localhost:5000/assignments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+Content-Type: application/json
+
+{
+    "laptopId": 2,
+    "employeeId": 1,
+    "assignedAt": "2023-03-01"
+}
+
+###
+
+# Fetch Laptops Assigned to an Employee
+GET http://localhost:5000/assignments/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+
+###
+
+### Maintenance Management
+# Add a Maintenance Log
+POST http://localhost:5000/maintenance
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+Content-Type: application/json
+
+{
+    "laptopId": 2,
+    "description": "Screen replacement",
+    "cost": 150,
+    "loggedAt": "2023-04-10"
+}
+
+###
+
+# View Maintenance History
+GET http://localhost:5000/maintenance/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+
+###
+
+### Issue Reporting
+# Report an Issue
+POST http://localhost:5000/issues
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
+Content-Type: application/json
+
+{
+    "laptopId": 2,
+    "description": "Battery not charging",
+    "priority": "high",
+    "reportedBy": "John Doe",
+    "reportedAt": "2023-04-11"
+}
+
+###
+
+# View Issues for a Laptop
+GET http://localhost:5000/issues/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzM1MDEyMDIsImV4cCI6MTczMzUwNDgwMn0.F0nnFbc2Oea4auqUCyPhudEIwp92M0ea_atsvn5tNdc
